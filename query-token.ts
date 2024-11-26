@@ -406,3 +406,49 @@ console.log("Starting script");
 main().catch((error) => {
   console.error("An error occurred:", error);
 });
+
+
+// Script Runner Will Look Like This
+// function runScript() {
+//   console.log("Running script");
+//   const rpcEndpoint = process.env.RPC_ENDPOINT || "https://api.mainnet-beta.solana.com";
+//   console.log(`Using RPC endpoint: ${rpcEndpoint}`);
+
+//   const child = exec(
+//     `set "RPC_ENDPOINT=${rpcEndpoint}" && ts-node -r tsconfig-paths/register test/query-token-info.ts 240`,
+//     { shell: "cmd.exe" },
+//   );
+
+//   let scriptOutput = "";
+
+//   child.stdout.on("data", (data) => {
+//     console.log(`Script output: ${data}`);
+//     scriptOutput += data;
+//   });
+
+//   child.stderr.on("data", (data) => {
+//     console.error(`Script error: ${data}`);
+//   });
+
+//   child.on("close", (code) => {
+//     console.log(`Script exited with code ${code}`);
+
+//     if (code !== 0) {
+//       console.error(`Error: Script exited with code ${code}`);
+//       return;
+//     }
+
+//     const existingFiles = fs
+//       .readdirSync(outputFolder)
+//       .filter((file) => file.startsWith("raydium_tokens_with_liquidity_"));
+//     let runNumber = Math.floor(existingFiles.length / 2);
+
+//     const txtFilePath = path.join(outputFolder, `raydium_tokens_with_liquidity_${runNumber}.txt`);
+//     fs.writeFileSync(txtFilePath, scriptOutput);
+
+//     pages.push(scriptOutput);
+//     currentPageIndex = pages.length - 1;
+//     console.log("Script executed successfully");
+//   });
+// }
+
